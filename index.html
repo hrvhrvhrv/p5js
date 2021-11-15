@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="js/p5.js"></script>
+    <script src="js/helperFunctions.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Line Madness</h1>
+    <script>
+        let colorArrayLines = [
+            "#ffe74c",
+            "#ff5964",
+            "#ffffff",
+            "#38618c",
+            "#35a7ff",
+        ]
+
+        let colorArrayBackGround = [
+            "#252323",
+            "#70798c",
+            "#f5f1ed",
+            "#dad2bc",
+            "#a99985",
+        ]
+
+
+        function setup() {
+            // set up canvas
+
+            createCanvas(400, 400);
+            // determine background colours
+            background(random(colorArrayBackGround));
+            // no 
+            noStroke();
+            fill(255, 204, 0);
+            circle(random(200), random(100), random(150));
+            // beginShape(LINES);
+            fill(0);
+            for (let i = 0; i < 7; i++) {
+                let pointyOrNo = true;
+                beginShape();
+                strokeJoin(ROUND);
+                noFill();
+                if (random(2) > 0.5) {
+                    pointyOrNo = false;
+                }
+                for (let i = 0; i < 8; i++) {
+                    let wideBot = random(width);
+                    let r = random(50);
+                    let height = random(400);
+                    let third = random(400);
+                    console.log(r);
+                    // stroke(r * 5);
+                    strokeWeight(random(5));
+                    stroke(random(colorArrayLines));
+                    // line(wideBot, height, height, wideBot, );
+                    // line(wideBot, height, height, wideBot, third, third);
+                    if (pointyOrNo) {
+                        curveVertex(wideBot, height);
+                    }
+                    vertex(wideBot, height);
+
+
+                }
+                endShape();
+            }
+        }
+
+
+
+
+        function draw() {
+            // background(200);
+            let step = frameCount % 20;
+            applyMatrix(1, 0, 4, 1, 640 + step, 150);
+            square(30, 20, 55);
+
+        }
+    </script>
+
+</body>
+
+</html>
